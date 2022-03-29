@@ -1,0 +1,25 @@
+from sklearn import preprocessing,datasets,neighbors
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.naive_bayes import GaussianNB,BernoulliNB
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+iris=datasets.load_iris()
+x,y=iris.data[: , :],iris.target
+x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,random_state=0,train_size=0.7)
+
+sc=StandardScaler()
+x_train=sc.fit_transform(x_train)
+x_test=sc.transform(x_test)
+
+scores=[]
+classifier = GaussianNB()
+classifier.fit(x_train,y_train)
+y_pred=classifier.predict(x_test)
+scores.append(accuracy_score(y_test,y_pred))
+cm=confusion_matrix(y_test,y_pred)
+print("confusion matrrix")
+print(cm)
+a=accuracy_score(y_test,y_pred)
+print("accuracy score")
+print(a)
