@@ -1,0 +1,6 @@
+import pandas as pd
+stud_marks={'Marks':[80,50,90,70],'stud_age:':[18,20,22,19]}
+stud_df=pd.DataFrame({'marks':stud_marks})
+print(stud_df)
+print(stud_df.sort_values(by=['marks']))
+print(stud_df.sort_values(by=['marks'],ascending=False))
