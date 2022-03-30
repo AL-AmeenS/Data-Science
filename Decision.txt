@@ -1,0 +1,15 @@
+from json import load
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
+
+data = load_iris()
+x=data.data
+y=data.target
+x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=50,test_size=0.25)
+classifier=DecisionTreeClassifier()
+classifier.fit(x_train,y_train)
+y_pred=classifier.predict(x_test)
+print('Acccuracy on train data using gini',accuracy_score(y_true=y_train,y_pred=classifier.predict(x_train)))
+print('Acccuracy on test data using gini',accuracy_score(y_true=y_test,y_pred=y_pred))
